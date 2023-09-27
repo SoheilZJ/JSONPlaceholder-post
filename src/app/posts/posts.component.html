@@ -1,0 +1,24 @@
+<app-header [header]="'Posts'">
+    <button mat-button (click)="addPost()">Add Post</button>
+    <button mat-button (click)="onPreviousPage()"> -10 ←</button>
+    <button mat-button (click)="onNextPage()"> → +10</button>
+
+</app-header>
+<ng-container *ngIf="vm$ | async as vm">
+    <ng-container *ngFor="let post of vm.postItems">
+        <ng-container *ngIf="post">
+            <div class="">
+                <mat-card class="example-card">
+                    <mat-card-header>
+                        <mat-card-title>{{post.username}}: <small>{{post.title}}</small> </mat-card-title>
+                        <mat-card-subtitle>{{post.body}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-actions>
+                        <button (click)="editPost(post)" mat-button>EDIT</button>
+                        <button (click)="goToPost(post)" mat-button>VIEW</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </ng-container>
+    </ng-container>
+</ng-container>

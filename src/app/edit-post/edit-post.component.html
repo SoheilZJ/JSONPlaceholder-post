@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>{{header}}</h2>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="postForm">
+
+        <mat-form-field class="first-input">
+            <input matInput placeholder="Author" formControlName="username"
+                   [errorStateMatcher]="matcher">
+            <mat-error *ngIf="postForm.get('username')?.hasError('required')">
+                This field is <strong>Required</strong>.
+            </mat-error>
+            <mat-error *ngIf="postForm.get('username')?.hasError('maxlength')">
+                MaxLength is <strong>20</strong> characters.
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="second-input">
+            <input matInput placeholder="Title" formControlName="title"
+                   [errorStateMatcher]="matcher">
+            <mat-error *ngIf="postForm.get('title')?.hasError('required')">
+                This field is <strong>Required</strong>.
+            </mat-error>
+            <mat-error *ngIf="postForm.get('title')?.hasError('maxlength')">
+                MaxLength is <strong>100</strong> characters.
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="third-input">
+            <textarea matInput placeholder="Body" formControlName="body"
+                      [errorStateMatcher]="matcher"></textarea>
+            <mat-error *ngIf="postForm.get('body')?.hasError('required')">
+                This field is <strong>Required</strong>.
+            </mat-error>
+        </mat-form-field>
+
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>CANCEL</button>
+    <button mat-button [disabled]="postForm.invalid" (click)="handleSave()" cdkFocusInitial>SAVE</button>
+</mat-dialog-actions>

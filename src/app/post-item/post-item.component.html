@@ -1,0 +1,15 @@
+<app-header [header]="'post'"></app-header>
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title>Name: {{post.username}}</mat-card-title>
+        <mat-card-subtitle>Title: {{post.title}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+            {{ post.body }}
+    </mat-card-content>
+    <mat-card-actions>
+        <button (click)="gotoPosts()" mat-button>BACK</button>
+        <button (click)="openEditDialog()" mat-button>EDIT</button>
+    </mat-card-actions>
+</mat-card>
+
